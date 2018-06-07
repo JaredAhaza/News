@@ -1,0 +1,31 @@
+{%extends 'all-news/base.html'%}
+
+{% block content %}
+{{block.super}}
+<div class="container">
+
+    <!--Looping through news-->
+    {% for news_item in news %}
+
+    <div class="row">
+        <!--displaying news articles-->
+        <div class="col-xs-6 col-sm-6 col-lg-6">
+            <h2 class="text-center"> {{news_item.title}} </h2>
+            <h2 class="text-center"> {{news_item.post}} </h2>
+            <h2 class="text-center"> {{news_item.editor}} </h2>
+            <h2 class="text-center"> {{news_item.tags}} </h2>
+            <h2 class="text-center"> {{news_item.pub_date}} </h2>
+        </div>
+
+        <!--Displaying news article images-->
+        <div class="col-xs-6 col-sm-6 col-lg-6">
+            <img src="{{news_item.article_image.url}}" class="img-responsive" alt="Image">
+        </div>
+    </div>
+    {% empty %}
+    <div class="row">
+        <h2 class="text-center">There is no news items</h2>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
